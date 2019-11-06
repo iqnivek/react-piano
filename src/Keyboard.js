@@ -77,10 +77,6 @@ class Keyboard extends React.Component {
               active={isActive}
               accidental={isAccidental}
               disabled={this.props.disabled}
-              onPlayNoteInput={this.props.onPlayNoteInput}
-              onStopNoteInput={this.props.onStopNoteInput}
-              gliss={this.props.gliss}
-              useTouchEvents={this.props.useTouchEvents}
               key={midiNumber}
             >
               {this.props.disabled

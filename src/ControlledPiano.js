@@ -10,8 +10,6 @@ class ControlledPiano extends React.Component {
     activeNotes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
     playNote: PropTypes.func.isRequired,
     stopNote: PropTypes.func.isRequired,
-    onPlayNoteInput: PropTypes.func.isRequired,
-    onStopNoteInput: PropTypes.func.isRequired,
     renderNoteLabel: PropTypes.func.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,
@@ -44,16 +42,6 @@ class ControlledPiano extends React.Component {
     isMouseDown: false,
     useTouchEvents: false,
   };
-
-  componentDidMount() {
-    window.addEventListener('keydown', this.onKeyDown);
-    window.addEventListener('keyup', this.onKeyUp);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.onKeyDown);
-    window.removeEventListener('keyup', this.onKeyUp);
-  }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.activeNotes !== prevProps.activeNotes) {
@@ -162,9 +150,6 @@ class ControlledPiano extends React.Component {
     return (
       <div
         style={{ width: '100%', height: '100%' }}
-        onMouseDown={this.onMouseDown}
-        onMouseUp={this.onMouseUp}
-        onTouchStart={this.onTouchStart}
         data-testid="container"
       >
         <Keyboard

@@ -8,13 +8,9 @@ class Key extends React.Component {
   static propTypes = {
     midiNumber: PropTypes.number.isRequired,
     naturalKeyWidth: PropTypes.number.isRequired, // Width as a ratio between 0 and 1
-    gliss: PropTypes.bool.isRequired,
-    useTouchEvents: PropTypes.bool.isRequired,
     accidental: PropTypes.bool.isRequired,
     active: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
-    onPlayNoteInput: PropTypes.func.isRequired,
-    onStopNoteInput: PropTypes.func.isRequired,
     accidentalWidthRatio: PropTypes.number.isRequired,
     pitchPositions: PropTypes.object.isRequired,
     children: PropTypes.node,
@@ -67,8 +63,6 @@ class Key extends React.Component {
       naturalKeyWidth,
       accidentalWidthRatio,
       midiNumber,
-      gliss,
-      useTouchEvents,
       accidental,
       active,
       disabled,
@@ -91,13 +85,6 @@ class Key extends React.Component {
             accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
           ),
         }}
-        onMouseDown={useTouchEvents ? null : this.onPlayNoteInput}
-        onMouseUp={useTouchEvents ? null : this.onStopNoteInput}
-        onMouseEnter={gliss ? this.onPlayNoteInput : null}
-        onMouseLeave={this.onStopNoteInput}
-        onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
-        onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
-        onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
       >
         <div className="ReactPiano__NoteLabelContainer">{children}</div>
       </div>
